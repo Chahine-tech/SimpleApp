@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/components/default_button.dart';
+import 'package:mobile/screens/otp.dart';
+
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -9,6 +11,8 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
+   final _formKey = GlobalKey<FormState>();
+   final TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,41 +43,24 @@ class _AuthScreenState extends State<AuthScreen> {
                 border: Border.all(color: Colors.white),
                 borderRadius: BorderRadius.circular(12)
                 ),
-            child: const Padding(
+            child: Padding(
               padding: EdgeInsets.only(left: 20.0),
               child: TextField(
                 decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintText: 'Email',
+                  hintText: 'Phone',
                 ),
+                controller: _controller,
               ),
             ),
             ),
             ),
             const SizedBox(height: 10),
-            Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25.0),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-                border: Border.all(color: Colors.white),
-                borderRadius: BorderRadius.circular(12)
-                ),
-            child: const Padding(
-              padding: EdgeInsets.only(left: 20.0),
-              child: TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Password',
-                ),
-              ),
-            ),
-            ),
-            
-            ),
-            const SizedBox(height: 10),
-            const DefaultButton(color: Colors.purple),
+            DefaultButton(color: Colors.purple, press: () async {
+                  print(_controller.text);
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => OTPScreen(phone: _controller.text)));
+            }),
             const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
