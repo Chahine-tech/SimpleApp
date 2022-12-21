@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/components/default_button.dart';
+import 'package:mobile/screens/google_sign_in.dart';
 import 'package:mobile/screens/otp.dart';
 
 
@@ -63,7 +64,7 @@ class _AuthScreenState extends State<AuthScreen> {
             }),
             const SizedBox(height: 10),
             ElevatedButton(onPressed: () {
-              
+              GoogleSignInProviders();
             }
             , child: const Text('Sign up with Google')),
 
