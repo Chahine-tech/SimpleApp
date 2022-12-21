@@ -70,7 +70,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                 ),
                 Text('Register now!', style: TextStyle(
-                color: Colors.blue,
+                  color: Colors.blue,
                   fontWeight: FontWeight.bold
                   ),
                 ),

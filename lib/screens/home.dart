@@ -22,7 +22,6 @@ class _HomeState extends State<Home> {
          children: const [
            Text('Coucou'),
            SizedBox(height: 20),
-           DefaultButton(color: Colors.purple)
          ],
         )
         )
