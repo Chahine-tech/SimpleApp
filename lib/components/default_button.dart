@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/screens/event.dart';
+
 
 class DefaultButton extends StatelessWidget {
   const DefaultButton({super.key, this.color = Colors.blue, this.press});

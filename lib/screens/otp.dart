@@ -26,7 +26,7 @@ class _OTPScreenState extends State<OTPScreen> {
       body: Column(
         children: [
           Container(
-            margin: EdgeInsets.only(top: 40),
+            margin: const EdgeInsets.only(top: 40),
             child: Center(
               child: Text(
                 'Verify ${widget.phone}',
@@ -50,7 +50,7 @@ class _OTPScreenState extends State<OTPScreen> {
                     if (value.user != null) {
                       Navigator.pushAndRemoveUntil(
                           context,
-                          MaterialPageRoute(builder: (context) => Home()),
+                          MaterialPageRoute(builder: (context) => const Home()),
                           (route) => false);
                     }
                   });
