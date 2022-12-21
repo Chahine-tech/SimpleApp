@@ -72,3 +72,4 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation "androidx.browser:browser:1.4.0"
 }
+apply plugin: "com.google.gms.google-services"

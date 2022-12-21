@@ -62,6 +62,11 @@ class _AuthScreenState extends State<AuthScreen> {
                     builder: (context) => OTPScreen(phone: _controller.text)));
             }),
             const SizedBox(height: 10),
+            ElevatedButton(onPressed: () {
+              
+            }
+            , child: const Text('Sign up with Google')),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
