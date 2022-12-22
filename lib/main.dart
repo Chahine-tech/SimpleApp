@@ -3,6 +3,7 @@ import 'package:mobile/firebase_options.dart';
 import 'package:mobile/screens/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:mobile/screens/google_sign_in.dart';
+import 'package:mobile/wrapper.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -23,7 +24,7 @@ class App extends StatelessWidget {
    Widget build(BuildContext context) => ChangeNotifierProvider(
       create : (context) => GoogleSignInProviders(),
       child: const MaterialApp(
-        home: AuthScreen(),
+        home: Wrapper(),
       ));
 }
 
