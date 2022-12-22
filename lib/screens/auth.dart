@@ -66,7 +66,7 @@ class _AuthScreenState extends State<AuthScreen> {
             const SizedBox(height: 10),
             ElevatedButton(onPressed: () {
               final provider = Provider.of<GoogleSignInProviders>(context, listen: false);
-              provider.googleLogin();
+              provider.googleLogin(context);
             }
             , child: const Text('Sign up with Google')),
 

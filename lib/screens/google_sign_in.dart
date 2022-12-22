@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mobile/screens/home.dart';
 
 class GoogleSignInProviders extends ChangeNotifier {
   final googleSignInProviders = GoogleSignIn();
@@ -9,7 +10,7 @@ class GoogleSignInProviders extends ChangeNotifier {
 
   GoogleSignInAccount get user => _user!;
 
-  Future googleLogin() async {
+  Future googleLogin(BuildContext context) async {
     final googleUser = await googleSignInProviders.signIn();
     if(googleUser == null) return;
     _user = googleUser;
@@ -21,8 +22,19 @@ class GoogleSignInProviders extends ChangeNotifier {
       idToken: googleAuth.idToken,
     );
     
-    await FirebaseAuth.instance.signInWithCredential((credential));
-
+      try {
+        await FirebaseAuth.instance.signInWithCredential((credential)).then((value) async {
+          if (value.user != null) {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => const Home()),
+                (route) => false);
+              }
+        });    
+      }
+      catch(e) {
+        print("error");
+      }
     notifyListeners();
   }
 } 
