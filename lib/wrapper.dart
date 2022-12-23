@@ -34,9 +34,10 @@ class _WrapperState extends State<Wrapper> {
 
   @override
   Widget build(BuildContext context) {
-    if (user == null)
-      return AuthScreen();
-    else
-      return Home();
+    if (user == null) {
+      return const AuthScreen();
+    } else {
+      return const Home();
+    }
   }
 }
