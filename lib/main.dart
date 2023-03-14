@@ -6,6 +6,7 @@ import 'package:mobile/wrapper.dart';
 import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:favicon/favicon.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,6 +39,9 @@ class WebViewApp extends StatefulWidget {
   State<WebViewApp> createState() => _WebViewAppState();
 }
 
+final List<String> urls = [];
+final List<String> iconsUrls = [];
+
 class _WebViewAppState extends State<WebViewApp> {
   final controller = WebViewController()
     ..setJavaScriptMode(JavaScriptMode.unrestricted)
@@ -47,16 +51,23 @@ class _WebViewAppState extends State<WebViewApp> {
         onProgress: (int progress) {
           // Update loading bar.
         },
-        onPageStarted: (String url) {
-          FirebaseAnalytics.instance.logEvent(
-            name: 'website_visit',
-            parameters: {'url': url},
-          );
-          
+        onPageStarted: (String url) async {
+          var icon = await FaviconFinder.getBest(url);
+          iconsUrls.add(icon!.url);
+          print(iconsUrls);
         },
-        onPageFinished: (String url) {},
+        onPageFinished: (String url) {
+        },
         onWebResourceError: (WebResourceError error) {},
         onNavigationRequest: (NavigationRequest request) {
+          FirebaseAnalytics.instance.logEvent(
+            name: 'website_visit',
+            parameters: {
+              'url': request.url,
+            },
+          );
+          urls.add(request.url);
+          print(urls);
           return NavigationDecision.navigate;
         },
       ),
