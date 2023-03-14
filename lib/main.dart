@@ -7,12 +7,14 @@ import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:favicon/favicon.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   runApp(const MaterialApp(
     home: WebViewApp(),
   ));
@@ -73,6 +75,12 @@ class _WebViewAppState extends State<WebViewApp> {
       ),
     )
     ..loadRequest(Uri.parse('https://google.com'));
+
+    void saveLists() async{
+      final sharedpref = await SharedPreferences.getInstance();
+      sharedpref.setString(key, value)
+    }
+
 
   @override
   Widget build(BuildContext context) {
