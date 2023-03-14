@@ -45,6 +45,7 @@ dependencies:
   webview_flutter: ^4.0.6
   firebase_analytics: ^10.1.5
   shared_preferences: ^2.0.15
+  favicon: ^1.1.1
 
 dev_dependencies:
   flutter_test:
